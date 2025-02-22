@@ -1,0 +1,41 @@
+
+> app@0.0.0 start
+> ng serve
+
+
+Warning: This is a simple server for use in testing or debugging Angular applications
+locally. It hasn't been reviewed for security issues.
+
+Binding this server to an open connection can result in compromising your application or
+computer. Using a different host than the one passed to the "--host" flag might result in
+websocket connection issues. You might need to use "--disable-host-check" if that's the
+case.
+    
+Component HMR has been enabled.
+If you encounter application reload issues, you can manually reload the page to bypass HMR and/or disable this feature with the `--no-hmr` command line option.
+Please consider reporting any issues you encounter here: https://github.com/angular/angular-cli/issues
+
+❯ Building...
+✔ Building...
+Browser bundles     
+Initial chunk files  | Names            |  Raw size
+polyfills.js         | polyfills        |  90.20 kB | 
+main.js              | main             |  23.22 kB | 
+styles.css           | styles           |  96 bytes | 
+
+                     | Initial total    | 113.52 kB
+
+
+Server bundles      
+Initial chunk files  | Names            |  Raw size
+polyfills.server.mjs | polyfills.server | 572.91 kB | 
+main.server.mjs      | main.server      |  24.55 kB | 
+server.mjs           | server           |   1.86 kB | 
+
+Application bundle generation complete. [2.072 seconds]
+
+Watch mode enabled. Watching for file changes...
+NOTE: Raw file sizes do not reflect development server per-request transformations.
+  ➜  Local:   http://localhost:54821/
+  ➜  Network: http://172.17.0.3:54821/
+  ➜  press h + enter to show help

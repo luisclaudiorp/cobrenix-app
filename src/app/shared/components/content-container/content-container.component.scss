@@ -1,0 +1,17 @@
+.content-container {
+  position: fixed;
+  top: 135px; // Ajuste conforme a altura do seu menu
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1;
+
+  &.with-content {
+    opacity: 1;
+    visibility: visible;
+    background-color: #008f41; // Verde mais escuro
+  }
+}

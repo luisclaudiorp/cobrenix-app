@@ -1,0 +1,60 @@
+{
+  "LOGIN": {
+    "TITLE": "Login",
+    "EMAIL": "Email",
+    "EMAIL_PLACEHOLDER": "Enter your email",
+    "EMAIL_REQUIRED": "Email is required",
+    "EMAIL_INVALID": "Invalid email",
+    "PASSWORD": "Password",
+    "PASSWORD_PLACEHOLDER": "Enter your password",
+    "PASSWORD_REQUIRED": "Password is required",
+    "REMEMBER_ME": "Remember me",
+    "SUBMIT": "Login",
+    "LOADING": "Loading...",
+    "ERROR": "Invalid email or password",
+    "SHOW_PASSWORD": "Show password",
+    "HIDE_PASSWORD": "Hide password"
+  },
+  "MENU": {
+    "HOME": "Home",
+    "CLIENTS": "Clients",
+    "PRODUCTS": "Products",
+    "SALES": "Sales",
+    "OTHERS": "Others",
+    "USER": "User",
+    "LIST": "List",
+    "REGISTER": "Register"
+  },
+  "OTHERS_MENU": {
+    "THEME": "Theme",
+    "PROFILE": "Profile",
+    "LANGUAGE": "Language",
+    "LOGOUT": "Logout"
+  },
+  "LANGUAGES": {
+    "PT": "Portuguese",
+    "EN": "English"
+  },
+  "THEME": {
+    "LIGHT": "Light Theme",
+    "DARK": "Dark Theme"
+  },
+  "PROFILE": {
+    "TITLE": "User Information",
+    "NAME": "Name",
+    "EMAIL": "Email",
+    "ROLE": "Role",
+    "ROLES": {
+      "ADMIN": "Administrator",
+      "SALES": "Sales"
+    }
+  },
+  "LOGOUT": {
+    "CONFIRM_TITLE": "Confirm Logout",
+    "CONFIRM_MESSAGE": "Are you sure you want to logout?"
+  },
+  "DIALOG": {
+    "CANCEL": "Cancel",
+    "CONFIRM": "Confirm"
+  }
+}

@@ -1,0 +1,39 @@
+.decorative-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: clamp(1rem, 3vw, 2rem);
+  color: white;
+  font-size: clamp(2rem, 5vw, 3rem);
+  letter-spacing: clamp(0.2rem, 1vw, 0.5rem);
+  padding: 1rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  
+  span {
+    opacity: 0.9;
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}
+
+/* Ajustes para telas muito pequenas */
+@media screen and (max-width: 480px) {
+  .decorative-text {
+    gap: 0.8rem;
+  }
+}
+
+/* Ajustes para telas médias */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .decorative-text {
+    gap: 1.2rem;
+  }
+}

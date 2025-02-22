@@ -1,0 +1,21 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.app-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+
+  &.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
