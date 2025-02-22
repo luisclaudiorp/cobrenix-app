@@ -1,0 +1,15 @@
+<div class="auth-container" [class.light-theme]="!isDarkTheme" [class.dark-theme]="isDarkTheme">
+  <div class="top-controls">
+    <div class="theme-selector">
+      <button (click)="toggleTheme(!isDarkTheme)" [attr.title]="isDarkTheme ? 'Modo claro' : 'Modo escuro'">
+        <i class="fas" [class.fa-sun]="isDarkTheme" [class.fa-moon]="!isDarkTheme"></i>
+      </button>
+    </div>
+    <div class="language-selector">
+      <button (click)="toggleLanguage()" [attr.title]="currentLanguage === 'pt' ? 'Switch to English' : 'Mudar para Português'">
+        {{ currentLanguage === 'pt' ? 'EN' : 'PT' }}
+      </button>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</div>
