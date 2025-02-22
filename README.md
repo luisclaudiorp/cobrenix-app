@@ -1,59 +1,142 @@
-# App
+# CobreNix
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.4.
+Sistema de gestão financeira desenvolvido com Angular 17, focado em uma experiência moderna e intuitiva.
 
-## Development server
+## 🚀 Funcionalidades
 
-To start a local development server, run:
+- 🔐 **Autenticação Segura**
+  - Login com validação
+  - Persistência de sessão
+  - Proteção de rotas
 
+- 🎨 **Interface Moderna**
+  - Temas claro/escuro
+  - Design responsivo
+  - Animações suaves
+  - Componentes reutilizáveis
+
+- 🌍 **Internacionalização**
+  - Suporte para múltiplos idiomas (PT-BR, EN)
+  - Persistência da preferência de idioma
+
+- 📱 **Layout Adaptativo**
+  - Menu mobile otimizado
+  - Interface desktop amigável
+  - Navegação intuitiva
+
+## 🛠️ Tecnologias
+
+- Angular 17
+- TypeScript
+- SCSS
+- NgRx (em breve)
+- RxJS
+- Angular Material (em breve)
+
+## 📦 Pré-requisitos
+
+- Node.js 18.x ou superior
+- npm 9.x ou superior
+- Angular CLI 17.x
+
+## 🚀 Instalação
+
+1. Clone o repositório:
+```bash
+git clone https://github.com/luisclaudiorp/cobrenix-app.git
+```
+
+2. Instale as dependências:
+```bash
+cd cobrenix-app
+npm install
+```
+
+3. Inicie o servidor de desenvolvimento:
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+4. Acesse `http://localhost:4200`
 
-## Code scaffolding
+## 🔧 Scripts Disponíveis
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- `ng serve` - Inicia o servidor de desenvolvimento
+- `ng build` - Gera build de produção
+- `ng test` - Executa testes unitários
+- `ng lint` - Executa linting do código
+- `ng e2e` - Executa testes end-to-end
 
-```bash
-ng generate component component-name
+## 📁 Estrutura do Projeto
+
+```
+src/
+├── app/
+│   ├── core/           # Serviços e guardas essenciais
+│   ├── features/       # Módulos de funcionalidades
+│   ├── layouts/        # Layouts da aplicação
+│   └── shared/         # Componentes compartilhados
+├── assets/
+│   ├── i18n/          # Arquivos de tradução
+│   └── icons/         # Ícones e imagens
+└── environments/      # Configurações por ambiente
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🔐 Autenticação
 
-```bash
-ng generate --help
-```
+O sistema utiliza autenticação baseada em token JWT com:
+- Interceptor para requisições HTTP
+- Guard para proteção de rotas
+- Persistência de sessão
+- Refresh token (em breve)
 
-## Building
+## 🎨 Temas
 
-To build the project run:
+Suporte a temas claro e escuro com:
+- Transições suaves
+- Persistência da preferência
+- Cores consistentes
+- Contraste adequado
 
-```bash
-ng build
-```
+## 🌐 Internacionalização
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Suporte completo para:
+- Português (PT-BR)
+- Inglês (EN)
+- Novos idiomas podem ser facilmente adicionados
 
-## Running unit tests
+## 📱 Responsividade
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Design responsivo com:
+- Menu mobile otimizado
+- Layouts adaptáveis
+- Breakpoints consistentes
+- Experiência móvel aprimorada
 
-```bash
-ng test
-```
+## 🤝 Contribuição
 
-## Running end-to-end tests
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/nova-feature`)
+3. Commit suas mudanças (`git commit -m 'feat: Adiciona nova feature'`)
+4. Push para a branch (`git push origin feature/nova-feature`)
+5. Abra um Pull Request
 
-For end-to-end (e2e) testing, run:
+## 📝 Convenções
 
-```bash
-ng e2e
-```
+- **Commits:** Seguimos o padrão Conventional Commits
+- **Código:** Utilizamos ESLint e Prettier
+- **Branches:** Padrão GitFlow adaptado
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## 📄 Licença
 
-## Additional Resources
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 👥 Autores
+
+- **Luis Claudio** - [GitHub](https://github.com/luisclaudiorp)
+
+## 🙏 Agradecimentos
+
+- Angular Team
+- Contribuidores
+- Comunidade Open Source
