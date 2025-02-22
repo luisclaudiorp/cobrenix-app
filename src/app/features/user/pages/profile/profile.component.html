@@ -1,0 +1,20 @@
+<div class="user-info">
+  <h2>{{ 'PROFILE.TITLE' | translate }}</h2>
+  
+  <div class="info-card" *ngIf="currentUser">
+    <div class="info-item">
+      <label>{{ 'PROFILE.NAME' | translate }}:</label>
+      <span>{{ currentUser.name }}</span>
+    </div>
+    
+    <div class="info-item">
+      <label>{{ 'PROFILE.EMAIL' | translate }}:</label>
+      <span>{{ currentUser.email }}</span>
+    </div>
+    
+    <div class="info-item">
+      <label>{{ 'PROFILE.ROLE' | translate }}:</label>
+      <span>{{ ('PROFILE.ROLES.' + currentUser.role.toUpperCase()) | translate }}</span>
+    </div>
+  </div>
+</div>

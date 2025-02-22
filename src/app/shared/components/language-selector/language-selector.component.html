@@ -1,0 +1,15 @@
+<div class="language-selector" (click)="toggleDropdown($event)" [class.open]="isOpen">
+  <i class="fas fa-language"></i>
+  <span>{{ languageService.getLanguageName(currentLanguage) }}</span>
+  <i class="fas fa-chevron-down"></i>
+
+  <div class="language-dropdown" *ngIf="isOpen">
+    <div class="language-option" 
+         *ngFor="let lang of languages"
+         (click)="selectLanguage(lang.code, $event)"
+         [class.active]="lang.code === currentLanguage">
+      <span>{{ lang.name }}</span>
+      <i class="fas fa-check" *ngIf="lang.code === currentLanguage"></i>
+    </div>
+  </div>
+</div>

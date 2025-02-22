@@ -1,0 +1,54 @@
+.theme-toggle {
+  display: block;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+
+  &:hover li {
+    background-color: #00a651;
+  }
+
+  .icon-container {
+    width: 1.2rem;
+    text-align: center;
+
+    i {
+      font-size: 1rem;
+    }
+
+    .light-icon {
+      display: inline-block;
+    }
+
+    .dark-icon {
+      display: none;
+    }
+  }
+
+  &.dark {
+    .light-icon {
+      display: none;
+    }
+
+    .dark-icon {
+      display: inline-block;
+    }
+
+    &:hover li {
+      background-color: #004d25;
+    }
+  }
+
+  .theme-text {
+    font-size: 0.9rem;
+  }
+}
