@@ -1,18 +1,18 @@
 {
   "routes": {
-    "/": {},
-    "/auth": {},
-    "/auth/login": {},
-    "/clients": {},
-    "/clients/list": {},
-    "/clients/register": {},
-    "/products": {},
-    "/products/list": {},
-    "/products/register": {},
-    "/sales": {},
-    "/sales/list": {},
-    "/sales/register": {},
-    "/user": {},
-    "/user/profile": {}
+    "/cobrenix-app": {},
+    "/cobrenix-app/auth": {},
+    "/cobrenix-app/auth/login": {},
+    "/cobrenix-app/clients": {},
+    "/cobrenix-app/clients/list": {},
+    "/cobrenix-app/clients/register": {},
+    "/cobrenix-app/products": {},
+    "/cobrenix-app/products/list": {},
+    "/cobrenix-app/products/register": {},
+    "/cobrenix-app/sales": {},
+    "/cobrenix-app/sales/list": {},
+    "/cobrenix-app/sales/register": {},
+    "/cobrenix-app/user": {},
+    "/cobrenix-app/user/profile": {}
   }
 }

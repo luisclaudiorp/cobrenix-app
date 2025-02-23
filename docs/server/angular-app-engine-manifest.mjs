@@ -1,6 +1,6 @@
 
 export default {
-  basePath: '/',
+  basePath: 'cobrenix-app',
   supportedLocales: {
   "en-US": ""
 },
