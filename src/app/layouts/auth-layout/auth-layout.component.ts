@@ -4,13 +4,11 @@ import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LanguageService, Language } from '../../core/services/language.service';
 import { ThemeService } from '../../core/services/theme.service';
-import { ToggleSwitchComponent } from '../../shared/components/toggle-switch/toggle-switch.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-auth-layout',
   standalone: true,
-  imports: [RouterModule, CommonModule, TranslateModule, ToggleSwitchComponent],
+  imports: [RouterModule, CommonModule, TranslateModule],
   templateUrl: './auth-layout.component.html',
   styleUrl: './auth-layout.component.scss'
 })
