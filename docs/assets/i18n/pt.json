@@ -1,0 +1,60 @@
+{
+  "LOGIN": {
+    "TITLE": "Entrar",
+    "EMAIL": "Email",
+    "EMAIL_PLACEHOLDER": "Digite seu email",
+    "EMAIL_REQUIRED": "Email é obrigatório",
+    "EMAIL_INVALID": "Email inválido",
+    "PASSWORD": "Senha",
+    "PASSWORD_PLACEHOLDER": "Digite sua senha",
+    "PASSWORD_REQUIRED": "Senha é obrigatória",
+    "REMEMBER_ME": "Lembrar-me",
+    "SUBMIT": "Entrar",
+    "LOADING": "Carregando...",
+    "ERROR": "Email ou senha inválidos",
+    "SHOW_PASSWORD": "Mostrar senha",
+    "HIDE_PASSWORD": "Ocultar senha"
+  },
+  "MENU": {
+    "HOME": "Início",
+    "CLIENTS": "Clientes",
+    "PRODUCTS": "Produtos",
+    "SALES": "Vendas",
+    "OTHERS": "Outros",
+    "USER": "Usuário",
+    "LIST": "Listar",
+    "REGISTER": "Cadastrar"
+  },
+  "OTHERS_MENU": {
+    "THEME": "Tema",
+    "PROFILE": "Perfil",
+    "LANGUAGE": "Idioma",
+    "LOGOUT": "Sair"
+  },
+  "LANGUAGES": {
+    "PT": "Português",
+    "EN": "Inglês"
+  },
+  "THEME": {
+    "LIGHT": "Tema Claro",
+    "DARK": "Tema Escuro"
+  },
+  "PROFILE": {
+    "TITLE": "Informações do Usuário",
+    "NAME": "Nome",
+    "EMAIL": "E-mail",
+    "ROLE": "Função",
+    "ROLES": {
+      "ADMIN": "Administrador",
+      "SALES": "Vendedor"
+    }
+  },
+  "LOGOUT": {
+    "CONFIRM_TITLE": "Confirmar Saída",
+    "CONFIRM_MESSAGE": "Tem certeza que deseja sair do sistema?"
+  },
+  "DIALOG": {
+    "CANCEL": "Cancelar",
+    "CONFIRM": "Confirmar"
+  }
+}
