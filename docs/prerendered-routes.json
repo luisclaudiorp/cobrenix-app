@@ -1,0 +1,18 @@
+{
+  "routes": {
+    "/": {},
+    "/auth": {},
+    "/auth/login": {},
+    "/clients": {},
+    "/clients/list": {},
+    "/clients/register": {},
+    "/products": {},
+    "/products/list": {},
+    "/products/register": {},
+    "/sales": {},
+    "/sales/list": {},
+    "/sales/register": {},
+    "/user": {},
+    "/user/profile": {}
+  }
+}
