@@ -16,7 +16,7 @@ export class AuthGuard {
 
     // Se não está autenticado, redireciona para login
     if (!this.authService.isAuthenticated()) {
-      window.location.href = '/auth/login';
+      this.router.navigate(['/auth/login']);
       return false;
     }
 
