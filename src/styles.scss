@@ -1,18 +1,86 @@
 /* Variáveis de tema */
 :root {
   // Tema claro (padrão)
-  --background-gradient-start: #00a651;
+  --background-gradient-start: linear-gradient(
+    135deg,
+    #018642 0%,
+    #00a651 100%
+  );
   --background-gradient-end: #00ff80;
   --text-color: #333;
   --text-color-inverse: #fff;
   --card-background: #fff;
   --hover-color: rgba(0, 0, 0, 0.2);
   --shadow-color: rgba(0, 0, 0, 0.1);
+  --card-color: rgba(255, 255, 255, 0.95);
+  --logo-color: #004d25;
+  --label-color: #004d25;
+  --background-label: rgba(255, 255, 255, 0.9);
+  --border-label: 2px solid rgba(0, 77, 37, 0.2);
+  --input-color: #003319;
+  --input-placeholder: rgba(0, 77, 37, 0.5);
+  --input-focus-border: #00a651;
+  --input-focus-background: white;
+  --input-focus-shadow: 0 0 0 4px rgba(0, 166, 81, 0.1);
+  --input-invalid-border: #ff4444;
+  --input-invalid-background: rgba(255, 68, 68, 0.05);
+  --input-invalid-shadow: 0 0 0 4px rgba(255, 68, 68, 0.1);
+  --toggle-color: rgba(0, 77, 37, 0.7);
+  --toggle-hover-color: #004d25;
+  --checkbox-color: #004d25;
+  --error-color: #ff4444;
+  --button-background: #00a651;
+  --button-color: white;
+  --button-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2);
+  --button-hover-background: #00cc66;
+  --button-hover-shadow: 0 4px 8px rgba(0, 0, 0, 0.15),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  --button-active-background: #008c46;
+  --button-active-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+    inset 0 1px 2px rgba(255, 255, 255, 0.1);
+  --button-disabled-background: rgba(0, 166, 81, 0.5);
+  --button-disabled-color: rgba(255, 255, 255, 0.7);
 }
 
 // Tema escuro
 body.dark-theme {
-  background: linear-gradient(135deg, #004d25 0%, #00a651 100%);
+  --background-gradient-start: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+  --background-gradient-end: #000;
+  --text-color: #ddd;
+  --text-color-inverse: #000;
+  --card-background: #222;
+  --hover-color: rgba(255, 255, 255, 0.2);
+  --shadow-color: rgba(255, 255, 255, 0.1);
+  --card-color: rgba(34, 34, 34, 0.95);
+  --logo-color: #888;
+  --label-color: #bbb;
+  --background-label: rgba(34, 34, 34, 0.9);
+  --border-label: 2px solid rgba(136, 136, 136, 0.2);
+  --input-color: #ccc;
+  --input-placeholder: rgba(204, 204, 204, 0.5);
+  --input-focus-border: #777;
+  --input-focus-background: #333;
+  --input-focus-shadow: 0 0 0 4px rgba(204, 204, 204, 0.1);
+  --input-invalid-border: #ff4444;
+  --input-invalid-background: rgba(255, 68, 68, 0.05);
+  --input-invalid-shadow: 0 0 0 4px rgba(255, 68, 68, 0.1);
+  --toggle-color: rgba(204, 204, 204, 0.7);
+  --toggle-hover-color: #ddd;
+  --checkbox-color: #bbb;
+  --error-color: #ff4444;
+  --button-background: #444;
+  --button-color: #fff;
+  --button-shadow: 0 2px 4px rgba(255, 255, 255, 0.1),
+    inset 0 1px 2px rgba(0, 0, 0, 0.2);
+  --button-hover-background: #666;
+  --button-hover-shadow: 0 4px 8px rgba(255, 255, 255, 0.15),
+    inset 0 1px 2px rgba(0, 0, 0, 0.3);
+  --button-active-background: #555;
+  --button-active-shadow: 0 2px 4px rgba(255, 255, 255, 0.1),
+    inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  --button-disabled-background: rgba(102, 102, 102, 0.5);
+  --button-disabled-color: rgba(255, 255, 255, 0.7);
 
   .submenu {
     background: #004d25 !important;
@@ -26,7 +94,8 @@ body.dark-theme {
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   margin: 0;
@@ -36,7 +105,11 @@ html, body {
 
 body {
   font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, var(--background-gradient-start) 0%, var(--background-gradient-end) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--background-gradient-start) 0%,
+    var(--background-gradient-end) 100%
+  );
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -55,10 +128,7 @@ body {
   opacity: 1;
   transform: scale(1);
   filter: blur(0);
-  transition: 
-    opacity 0.3s ease,
-    transform 0.3s ease,
-    filter 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease;
 }
 
 app-root {
