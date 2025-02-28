@@ -12,6 +12,6 @@
   &.with-content {
     opacity: 1;
     visibility: visible;
-    background-color: #008f41; // Verde mais escuro
+    background-color: var(--menu-background);
   }
 }

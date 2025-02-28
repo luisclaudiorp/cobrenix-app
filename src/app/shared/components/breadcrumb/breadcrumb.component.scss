@@ -1,6 +1,6 @@
 .breadcrumb {
   padding: 0.5rem 1rem;
-  background: rgba(0, 0, 0, 0.1);
+  background: var(--shadow-color);
   border-radius: 4px;
   width: 100%;
 
@@ -16,27 +16,27 @@
   li {
     display: flex;
     align-items: center;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--menu-color-font);
     font-size: 0.9rem;
 
     a {
-      color: rgba(255, 255, 255, 0.8);
+      color: var(--menu-color-font);
       text-decoration: none;
       transition: color 0.3s ease;
 
       &:hover {
-        color: white;
+        color: var(--submenu-background);
       }
     }
 
     &.active {
-      color: white;
+      color: var(--menu-color-font);
       font-weight: 500;
     }
 
     .separator {
       margin: 0 0.5rem;
-      color: rgba(255, 255, 255, 0.5);
+      color: var(--breadcrumb-sepataror);
     }
   }
 }

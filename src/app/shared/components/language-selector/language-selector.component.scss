@@ -3,7 +3,7 @@
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem;
-  color: white;
+  color: var(--menu-color-font);
   cursor: pointer;
   position: relative;
   border-radius: 4px;
@@ -24,11 +24,11 @@
   }
 
   &:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--shadow-color);
   }
 
   &.open {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--shadow-color);
 
     i.fa-chevron-down {
       transform: rotate(180deg);
@@ -40,7 +40,7 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    background: #00a651;
+    background: var(--submenu-background);
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
@@ -80,7 +80,7 @@
       }
 
       &:hover {
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: var(--shadow-color);
       }
     }
   }

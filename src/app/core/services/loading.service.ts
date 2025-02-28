@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable, timer } from 'rxjs';
 import { distinctUntilChanged, map } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoadingService {
   private requestCount = 0;
@@ -15,11 +15,11 @@ export class LoadingService {
 
   public loading$ = this.loadingSubject.pipe(
     distinctUntilChanged(),
-    map(loading => {
+    map((loading) => {
       if (this.isBrowser) {
         const body = document.body;
         const initializer = document.querySelector('.app-initializing');
-        
+
         if (loading) {
           body.classList.add('loading-active');
         } else {
@@ -53,7 +53,7 @@ export class LoadingService {
       const currentTime = Date.now();
       const elapsedTime = currentTime - this.loadingStartTime;
       const remainingTime = Math.max(0, this.minLoadingTime - elapsedTime);
-      
+
       if (remainingTime > 0) {
         timer(remainingTime).subscribe(() => {
           this.loadingSubject.next(false);

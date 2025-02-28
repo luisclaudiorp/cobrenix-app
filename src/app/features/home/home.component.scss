@@ -4,7 +4,7 @@
   align-items: center;
   flex-wrap: wrap;
   gap: clamp(1rem, 3vw, 2rem);
-  color: white;
+  color: var(--logo-color-main);
   font-size: clamp(2rem, 5vw, 3rem);
   letter-spacing: clamp(0.2rem, 1vw, 0.5rem);
   padding: 1rem;
@@ -13,11 +13,11 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 0;
-  
+
   span {
     opacity: 0.9;
     transition: transform 0.3s ease;
-    
+
     &:hover {
       transform: scale(1.2);
     }

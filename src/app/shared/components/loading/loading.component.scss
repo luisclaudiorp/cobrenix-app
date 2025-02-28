@@ -7,15 +7,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, rgba(0, 77, 37, 0.97) 0%, rgba(0, 166, 81, 0.97) 100%);
+  background: var(--loading-background);
   z-index: 9999;
   opacity: 0;
   animation: fadeIn 0.3s ease forwards;
   backdrop-filter: blur(8px);
   transform-origin: center;
-  animation: 
-    fadeIn 0.3s ease forwards,
-    scaleIn 0.3s ease forwards;
+  animation: fadeIn 0.3s ease forwards, scaleIn 0.3s ease forwards;
 }
 
 .loading-content {
@@ -25,7 +23,7 @@
   gap: 2rem;
 
   h1 {
-    color: white;
+    color: var(--white);
     font-size: 2rem;
     margin: 0;
     animation: fadeInUp 0.5s ease;
@@ -51,18 +49,16 @@
 .spinner {
   width: 50px;
   height: 50px;
-  border: 3px solid rgba(255, 255, 255, 0.1);
+  border: var(--loading-spinner-border);
   border-radius: 50%;
-  border-top-color: #00ff80;
+  border-top-color: var(--loading-spinner-border-color);
   animation: spin 1s ease-in-out infinite;
-  box-shadow: 0 0 10px rgba(0, 255, 128, 0.2),
-              0 0 20px rgba(0, 255, 128, 0.1),
-              0 0 30px rgba(0, 255, 128, 0.05);
+  box-shadow: var(--loading-spinner-box-shadow);
   position: relative;
 
   &::before,
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 50%;
     left: 50%;
@@ -75,13 +71,13 @@
 
   &::before {
     transform: translate(-50%, -50%) scale(1.2);
-    border-color: rgba(0, 255, 128, 0.1);
+    border-color: var(--loading-spinner-border-color-before);
     animation-delay: -0.5s;
   }
 
   &::after {
     transform: translate(-50%, -50%) scale(1.4);
-    border-color: rgba(0, 255, 128, 0.05);
+    border-color: var(--loading-spinner-border-color-after);
     animation-delay: -1s;
   }
 }
