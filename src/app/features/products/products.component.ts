@@ -10,19 +10,17 @@ import { ActivatedRoute } from '@angular/router';
     <div class="products-container">
       <h2>{{ getTitle() }}</h2>
       <p>Esta é uma página temporária para o módulo de Produtos.</p>
-      <p>Tipo: {{ getType() }}</p>
+      <div class="type-label">{{ getType() | titlecase }}</div>
     </div>
   `,
+  styleUrls: ['../shared/feature-container.scss'],
   styles: [`
-    .products-container {
-      padding: 2rem;
-      background: var(--background-color);
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    :host {
+      display: block;
+      margin: 1rem;
     }
-    h2 {
-      color: var(--primary-color);
-      margin-bottom: 1rem;
+    .products-container {
+      @extend .feature-container;
     }
   `]
 })
