@@ -1,7 +1,4 @@
 <div class="main-container">
-  <!-- Mobile Menu Overlay -->
-  <div class="menu-overlay" *ngIf="isMenuOpen" (click)="closeMenu()"></div>
-
   <!-- Header -->
   <header class="header">
     <div class="header-top">
@@ -11,86 +8,15 @@
       <app-breadcrumb></app-breadcrumb>
     </div>
     
-    <!-- Menu Button (Mobile) -->
-    <button class="menu-toggle" [class.menu-open]="isMenuOpen" (click)="toggleMenu($event)">
-      <span class="menu-icon"></span>
-    </button>
-
-    <!-- Navigation Menu -->
-    <nav class="main-nav" [class.menu-open]="isMenuOpen">
-      <ul>
-        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">
-          <li>{{ 'MENU.HOME' | translate }}</li>
-        </a>
-        <div class="menu-item" [class.open]="activeDropdown === 'clients'" routerLinkActive="parent-active">
-          <a (click)="toggleDropdown('clients', $event)">
-            <li>{{ 'MENU.CLIENTS' | translate }}</li>
-          </a>
-          <div class="submenu">
-            <a routerLink="/clients/list" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">
-              <li>{{ 'MENU.LIST' | translate }}</li>
-            </a>
-            <a routerLink="/clients/register" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">
-              <li>{{ 'MENU.REGISTER' | translate }}</li>
-            </a>
-          </div>
-        </div>
-
-        <div class="menu-item" [class.open]="activeDropdown === 'products'" routerLinkActive="parent-active">
-          <a (click)="toggleDropdown('products', $event)">
-            <li>{{ 'MENU.PRODUCTS' | translate }}</li>
-          </a>
-          <div class="submenu">
-            <a routerLink="/products/list" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">
-              <li>{{ 'MENU.LIST' | translate }}</li>
-            </a>
-            <a routerLink="/products/register" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">
-              <li>{{ 'MENU.REGISTER' | translate }}</li>
-            </a>
-          </div>
-        </div>
-
-        <div class="menu-item" [class.open]="activeDropdown === 'sales'" routerLinkActive="parent-active">
-          <a (click)="toggleDropdown('sales', $event)">
-            <li>{{ 'MENU.SALES' | translate }}</li>
-          </a>
-          <div class="submenu">
-            <a routerLink="/sales/list" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">
-              <li>{{ 'MENU.LIST' | translate }}</li>
-            </a>
-            <a routerLink="/sales/register" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">
-              <li>{{ 'MENU.REGISTER' | translate }}</li>
-            </a>
-          </div>
-        </div>
-        <div class="menu-item" [class.open]="activeDropdown === 'others'" routerLinkActive="parent-active">
-          <a (click)="toggleDropdown('others', $event)">
-            <li>{{ 'MENU.OTHERS' | translate }}</li>
-          </a>
-          <div class="submenu">
-            <li class="theme-item">
-              <i class="fas fa-palette"></i>
-              <span>{{ 'OTHERS_MENU.THEME' | translate }}</span>
-              <app-toggle-switch
-                [checked]="currentTheme === 'dark'"
-                leftIcon="fa-sun"
-                rightIcon="fa-moon"
-                (checkedChange)="toggleTheme($event)"
-              ></app-toggle-switch>
-            </li>
-            <li routerLink="/user/profile" (click)="closeMenu()">
-              <i class="fas fa-user"></i>
-              <span>{{ 'OTHERS_MENU.PROFILE' | translate }}</span>
-            </li>
-            <app-language-selector></app-language-selector>
-            <li class="logout-item" (click)="logout()">
-              <i class="fas fa-sign-out-alt"></i>
-              <span>{{ 'OTHERS_MENU.LOGOUT' | translate }}</span>
-            </li>
-          </div>
-        </div>
-      </ul>
-    </nav>
+    <!-- Menu Component -->
+    <app-main-menu
+      [isMenuOpen]="isMenuOpen"
+      [currentTheme]="currentTheme"
+      (menuToggle)="toggleMenu()"
+      (menuClose)="closeMenu()"
+      (themeToggle)="toggleTheme($event)"
+      (logoutClick)="logout()"
+    ></app-main-menu>
   </header>
 
   <app-content-container></app-content-container>
@@ -100,8 +26,8 @@
 
   <app-confirm-dialog
     *ngIf="showLogoutDialog"
-    [title]="'LOGOUT.CONFIRM_TITLE' | translate"
-    [message]="'LOGOUT.CONFIRM_MESSAGE' | translate"
+    [title]="dialogTitle"
+    [message]="dialogMessage"
     (confirm)="onConfirmLogout()"
     (cancel)="onCancelLogout()"
   ></app-confirm-dialog>

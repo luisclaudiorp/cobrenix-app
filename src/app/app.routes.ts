@@ -4,6 +4,8 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { HomeComponent } from './features/home/home.component';
 import { LoginComponent } from './features/auth/login/login.component';
 import { AuthGuard } from './core/guards/auth.guard';
+import { AdminGuard } from './core/guards/admin.guard';
+import { CompaniesComponent } from './features/companies/companies.component';
 
 export const routes: Routes = [
   {
@@ -91,6 +93,25 @@ export const routes: Routes = [
           {
             path: 'profile',
             loadComponent: () => import('./features/user/pages/profile/profile.component').then(m => m.ProfileComponent)
+          }
+        ]
+      },
+      {
+        path: 'companies',
+        canActivate: [AdminGuard],
+        children: [
+          {
+            path: 'list',
+            component: CompaniesComponent
+          },
+          {
+            path: 'register',
+            component: CompaniesComponent
+          },
+          {
+            path: '',
+            redirectTo: 'list',
+            pathMatch: 'full'
           }
         ]
       }

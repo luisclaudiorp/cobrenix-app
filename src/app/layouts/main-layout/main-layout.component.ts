@@ -1,15 +1,13 @@
-import { Component, HostListener, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { BreadcrumbComponent } from '../../shared/components/breadcrumb/breadcrumb.component';
 import { ContentContainerComponent } from '../../shared/components/content-container/content-container.component';
 import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/confirm-dialog.component';
-import { ToggleSwitchComponent } from '../../shared/components/toggle-switch/toggle-switch.component';
-import { LanguageSelectorComponent } from '../../shared/components/language-selector/language-selector.component';
+import { MainMenuComponent } from '../../shared/components/main-menu/main-menu.component';
 import { ThemeService } from '../../core/services/theme.service';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../core/services/auth.service';
-import { Router } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-main-layout',
@@ -20,8 +18,7 @@ import { TranslateModule } from '@ngx-translate/core';
     BreadcrumbComponent,
     ContentContainerComponent,
     ConfirmDialogComponent,
-    ToggleSwitchComponent,
-    LanguageSelectorComponent,
+    MainMenuComponent,
     CommonModule,
     TranslateModule
   ],
@@ -30,59 +27,37 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class MainLayoutComponent {
   isMenuOpen = false;
-  activeDropdown: string | null = null;
   showLogoutDialog = false;
-
   currentTheme: 'light' | 'dark' = 'light';
+
+  dialogTitle = '';
+  dialogMessage = '';
 
   constructor(
     private authService: AuthService,
-    private router: Router,
     private themeService: ThemeService,
-    private elementRef: ElementRef
+    private translate: TranslateService
   ) {
     this.themeService.theme$.subscribe(theme => {
       this.currentTheme = theme;
     });
-  }
-
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(event: MouseEvent) {
-    // Verifica se o clique foi fora do menu
-    if (!this.elementRef.nativeElement.querySelector('.main-nav').contains(event.target as Node)) {
-      this.closeMenu();
-      this.activeDropdown = null;
-    }
+    
+    this.translate.get(['LOGOUT.CONFIRM_TITLE', 'LOGOUT.CONFIRM_MESSAGE']).subscribe(translations => {
+      this.dialogTitle = translations['LOGOUT.CONFIRM_TITLE'];
+      this.dialogMessage = translations['LOGOUT.CONFIRM_MESSAGE'];
+    });
   }
 
   toggleTheme(isDark: boolean) {
     this.themeService.setTheme(isDark ? 'dark' : 'light');
   }
 
-  toggleMenu(event?: MouseEvent) {
-    if (event) {
-      event.stopPropagation();
-    }
+  toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
-    if (!this.isMenuOpen) {
-      this.activeDropdown = null;
-    }
   }
 
   closeMenu() {
     this.isMenuOpen = false;
-    this.activeDropdown = null;
-  }
-
-  toggleDropdown(menu: string, event: MouseEvent) {
-    // Evita que o clique se propague para o documento
-    event.stopPropagation();
-    
-    if (this.activeDropdown === menu) {
-      this.activeDropdown = null;
-    } else {
-      this.activeDropdown = menu;
-    }
   }
 
   logout() {
