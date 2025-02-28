@@ -26,6 +26,19 @@
     "LIST": "Listar",
     "REGISTER": "Cadastrar"
   },
+  "FEATURE": {
+    "TEMPORARY_PAGE": "Esta é uma página temporária para o módulo de {{module}}",
+    "TYPE": {
+      "LIST": "Lista",
+      "REGISTER": "Cadastro"
+    },
+    "MODULES": {
+      "CLIENTS": "Clientes",
+      "PRODUCTS": "Produtos",
+      "SALES": "Vendas",
+      "COMPANIES": "Empresas"
+    }
+  },
   "OTHERS_MENU": {
     "THEME": "Tema",
     "PROFILE": "Perfil",

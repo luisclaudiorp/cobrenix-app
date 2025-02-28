@@ -26,6 +26,19 @@
     "LIST": "List",
     "REGISTER": "Register"
   },
+  "FEATURE": {
+    "TEMPORARY_PAGE": "This is a temporary page for the {{module}} module",
+    "TYPE": {
+      "LIST": "List",
+      "REGISTER": "Register"
+    },
+    "MODULES": {
+      "CLIENTS": "Clients",
+      "PRODUCTS": "Products",
+      "SALES": "Sales",
+      "COMPANIES": "Companies"
+    }
+  },
   "OTHERS_MENU": {
     "THEME": "Theme",
     "PROFILE": "Profile",

@@ -1,26 +1,52 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-clients',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   template: `
     <div class="clients-container">
-      <h2>{{ getTitle() }}</h2>
-      <p>Esta é uma página temporária para o módulo de Clientes.</p>
-      <div class="type-label">{{ getType() | titlecase }}</div>
+      <h2>{{ getTitle() | translate }}</h2>
+      <p>{{ 'FEATURE.TEMPORARY_PAGE' | translate:{ module: ('FEATURE.MODULES.CLIENTS' | translate) } }}</p>
+      <div class="type-label">{{ 'FEATURE.TYPE.' + getType().toUpperCase() | translate }}</div>
     </div>
   `,
-  styleUrls: ['../shared/feature-container.scss'],
   styles: [`
     :host {
       display: block;
       margin: 1rem;
     }
     .clients-container {
-      @extend .feature-container;
+      padding: 2rem;
+      background: var(--card-background);
+      border-radius: 8px;
+      box-shadow: var(--user-info-box-shadow);
+      border: var(--user-info-border);
+      transition: all 0.3s ease;
+    }
+    h2 {
+      color: var(--logo-color-main);
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+      font-weight: 500;
+      text-shadow: var(--text-shadow);
+    }
+    p {
+      color: var(--text-color);
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+    .type-label {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: var(--hover-color);
+      border-radius: 4px;
+      color: var(--text-color);
+      font-size: 0.9rem;
+      margin-top: 1rem;
     }
   `]
 })
@@ -28,7 +54,8 @@ export class ClientsComponent {
   constructor(private route: ActivatedRoute) {}
 
   getTitle(): string {
-    return this.getType() === 'list' ? 'Lista de Clientes' : 'Cadastro de Clientes';
+    const type = this.getType().toUpperCase();
+    return `FEATURE.TYPE.${type}`;
   }
 
   getType(): string {

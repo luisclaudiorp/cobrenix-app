@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit, ElementRef, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -41,7 +41,10 @@ export class MainMenuComponent implements OnInit {
   currentUser: User | null = null;
   menuItems: MenuItem[] = [];
 
-  constructor(private authService: AuthService) {
+  constructor(
+    private authService: AuthService,
+    private elementRef: ElementRef
+  ) {
     this.authService.currentUser$.subscribe(user => {
       this.currentUser = user;
       this.initializeMenu();
@@ -138,9 +141,24 @@ export class MainMenuComponent implements OnInit {
     this.activeDropdown = null;
   }
 
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    // Verifica se o clique foi fora do menu
+    const clickedInside = this.elementRef.nativeElement.contains(event.target);
+    if (!clickedInside) {
+      this.activeDropdown = null;
+    }
+  }
+
   toggleDropdown(menu: string, event: MouseEvent) {
     event.stopPropagation();
-    this.activeDropdown = this.activeDropdown === menu ? null : menu;
+    // Se clicar no mesmo menu que está aberto, fecha
+    if (this.activeDropdown === menu) {
+      this.activeDropdown = null;
+    } else {
+      // Se clicar em um menu diferente, fecha o anterior e abre o novo
+      this.activeDropdown = menu;
+    }
   }
 
   toggleTheme() {
