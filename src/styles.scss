@@ -65,6 +65,19 @@
   --menu-color-font: white;
   --breadcrumb-color: rgba(255, 255, 255, 0.8);
   --breadcrumb-sepataror: rgba(255, 255, 255, 0.5);
+  --dialog-overlay-background: rgba(0, 0, 0, 0.5);
+  --dialog-content-background: #004d25;
+  --dialog-content-box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3),
+  0 2px 8px rgba(0, 255, 128, 0.1);
+  --dialog-actions-background-hover: rgba(255, 255, 255, 0.2);
+  --btn-confirm-color: rgb(53, 51, 51);
+  --btn-confirm-active: #00b359;
+  --btn-cancel: white;
+  --btn-cancel-hover: #c9ccca;
+  --user-info-border: 1px solid #eee;
+  --user-info-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
+  --user-info-label: #666;
+  --user-info-text: #333;
 }
 
 // Tema escuro
@@ -75,7 +88,7 @@ body.dark-theme {
   --text-color: #ddd;
   --text-color-inverse: #000;
   --card-background: #222;
-  --hover-color: rgba(255, 255, 255, 0.2);
+  --hover-color: rgb(41 157 60 / 20%);
   --shadow-color: rgba(255, 255, 255, 0.1);
   --card-color: rgba(34, 34, 34, 0.95);
   --logo-color: #888;
@@ -118,9 +131,9 @@ body.dark-theme {
   --loading-spinner-border-color-before: rgba(18, 20, 19, 0.1);
   --loading-spinner-border-color-after: rgba(5, 5, 5, 0.05);
   --text-shadow: 0 1px 2px rgba(255, 255, 255, 0.1);
-  --menu-icon-background: white;
-  --menu-icon-background-color: white;
-  --a-hover-active: #c5d3cb;
+  --menu-icon-background: #00a651;
+  --menu-icon-background-color: #00a651;
+  --a-hover-active: #1b492e;
   --logout-link-color: #ff4444;
   --nav-background: #333;
   --logo-color-main: #00a651;
@@ -128,6 +141,19 @@ body.dark-theme {
   --menu-color-font: #00a651;
   --breadcrumb-color: rgba(255, 255, 255, 0.8);
   --breadcrumb-sepataror: rgba(255, 255, 255, 0.5);
+  --dialog-overlay-background: rgba(0, 0, 0, 0.5);
+  --dialog-content-background: #292e2b;
+  --dialog-content-box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3),
+  0 2px 8px rgba(0, 255, 128, 0.1);
+  --dialog-actions-background-hover: rgba(255, 255, 255, 0.2);
+  --btn-confirm-color: #00b359;
+  --btn-confirm-active: #00b359;
+  --btn-cancel: #747976;
+  --btn-cancel-hover: #c9ccca;
+  --user-info-border: 1px solid #eee;
+  --user-info-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --user-info-label: #666;
+  --user-info-text: #333;
 }
 
 .submenu {

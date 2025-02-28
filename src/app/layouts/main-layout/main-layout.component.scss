@@ -285,7 +285,7 @@
   }
 }
 
-/* Ajustes para mobile */
+
 @media screen and (max-width: 768px) {
   .header {
     .header-top {
@@ -352,31 +352,6 @@
         }
       }
 
-      // .menu-item {
-      //   .submenu {
-      //     background: #00a651;
-
-      //     li {
-      //       color: white;
-
-      //       &:hover {
-      //         background-color: rgba(255, 255, 255, 0.1);
-      //       }
-      //     }
-
-      //     a {
-      //       &:hover li,
-      //       &.active li {
-      //         background-color: rgba(0, 0, 0, 0.2);
-      //       }
-
-      //       &.active li::before {
-      //         background: white;
-      //       }
-      //     }
-      //   }
-      // }
-
       .menu-item {
         width: 100%;
 
@@ -432,73 +407,15 @@
   padding: 1rem;
 }
 
-// :host-context(.dark-theme) {
-//   .header {
-//     color: white;
-//   }
-
-//   .main-nav {
-//     ul {
-//       a {
-//         color: white;
-
-//         &:hover,
-//         &.active {
-//           li {
-//             background-color: #00a651;
-//           }
-//         }
-
-//         &.logout-link {
-//           li {
-//             color: #ff4444;
-//           }
-
-//           &:hover li {
-//             background-color: #ff4444;
-//             color: white;
-//           }
-//         }
-//       }
-
-// .menu-item {
-//   .submenu {
-//     background: #00a651;
-
-//     li {
-//       color: white;
-
-//       &:hover {
-//         background-color: rgba(255, 255, 255, 0.1);
-//       }
-//     }
-
-//     a {
-//       &:hover li,
-//       &.active li {
-//         background-color: rgba(0, 0, 0, 0.2);
-//       }
-
-//       &.active li::before {
-//         background: white;
-//       }
-//     }
-//   }
-// }
-// }
-//   }
-// }
-
-/* Ajustes para mobile no tema escuro */
 @media screen and (max-width: 768px) {
   :host-context(.dark-theme) {
     .menu-toggle {
       .menu-icon {
-        background-color: var(--white);
+        background-color: var(--menu-icon-background-color);
 
         &::before,
         &::after {
-          background-color: var(--white);
+          background-color: var(--menu-icon-background-color);
         }
       }
     }

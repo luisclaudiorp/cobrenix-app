@@ -4,23 +4,23 @@
   padding: 0 1rem;
 
   h2 {
-    color: white;
+    color: var(--white);
     margin-bottom: 2rem;
     font-size: 1.5rem;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    text-shadow: var(--text-shadow);
     font-weight: 500;
   }
 
   .info-card {
-    background: white;
+    background: var(--white);
     border-radius: 8px;
     padding: 2rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: var( --user-info-box-shadow);
 
     .info-item {
       display: flex;
       margin-bottom: 1.5rem;
-      border-bottom: 1px solid #eee;
+      border-bottom: var(--user-info-border);
       padding-bottom: 1rem;
 
       &:last-child {
@@ -31,13 +31,13 @@
 
       label {
         width: 120px;
-        color: #666;
+        color: var(--user-info-label);
         font-weight: 500;
       }
 
       span {
         flex: 1;
-        color: #333;
+        color: var(--user-info-text);
       }
     }
   }
