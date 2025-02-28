@@ -1,0 +1,89 @@
+<!-- Mobile Menu Overlay -->
+<div class="menu-overlay" *ngIf="isMenuOpen" (click)="closeMenu()"></div>
+
+<!-- Menu Button (Mobile) -->
+<button class="menu-toggle" [class.menu-open]="isMenuOpen" (click)="toggleMenu()">
+  <span class="menu-icon"></span>
+</button>
+
+<!-- Navigation Menu -->
+<nav class="main-nav" [class.menu-open]="isMenuOpen">
+  <ul>
+    <ng-container *ngFor="let item of menuItems">
+      <!-- Menu item sem submenu -->
+      <a *ngIf="hasAccess(item) && !item.children && item.route" 
+         [routerLink]="item.route" 
+         routerLinkActive="active" 
+         [routerLinkActiveOptions]="{exact: true}" 
+         (click)="closeMenu()">
+        <li>
+          <i *ngIf="item.icon" class="fas {{ item.icon }}"></i>
+          <span>{{ item.label | translate }}</span>
+        </li>
+      </a>
+
+      <!-- Menu item com ação (sem rota) -->
+      <a *ngIf="hasAccess(item) && !item.children && item.action" 
+         (click)="item.action(); closeMenu()">
+        <li>
+          <i *ngIf="item.icon" class="fas {{ item.icon }}"></i>
+          <span>{{ item.label | translate }}</span>
+        </li>
+      </a>
+
+      <!-- Menu item com submenu -->
+      <div *ngIf="hasAccess(item) && item.children" 
+           class="menu-item" 
+           [class.open]="activeDropdown === item.label" 
+           routerLinkActive="parent-active">
+        <a (click)="toggleDropdown(item.label, $event)">
+          <li>
+            <i *ngIf="item.icon" class="fas {{ item.icon }}"></i>
+            <span>{{ item.label | translate }}</span>
+          </li>
+        </a>
+        <div class="submenu">
+          <ng-container *ngFor="let child of item.children">
+            <!-- Submenu item com rota -->
+            <a *ngIf="child.route" 
+               [routerLink]="child.route" 
+               routerLinkActive="active" 
+               [routerLinkActiveOptions]="{exact: true}" 
+               (click)="closeMenu()">
+              <li>
+                <i *ngIf="child.icon" class="fas {{ child.icon }}"></i>
+                <span>{{ child.label | translate }}</span>
+              </li>
+            </a>
+
+            <!-- Submenu item com ação (sem rota) -->
+            <ng-container *ngIf="!child.route">
+              <!-- Item do tema -->
+              <li *ngIf="child.label === 'OTHERS_MENU.THEME'" class="theme-item">
+                <i class="fas {{ child.icon }}"></i>
+                <span>{{ child.label | translate }}</span>
+                <app-toggle-switch
+                  [checked]="currentTheme === 'dark'"
+                  leftIcon="fa-sun"
+                  rightIcon="fa-moon"
+                  (checkedChange)="toggleTheme()"
+                ></app-toggle-switch>
+              </li>
+
+              <!-- Seletor de idioma -->
+              <app-language-selector *ngIf="child.label === 'OTHERS_MENU.LANGUAGE'"></app-language-selector>
+
+              <!-- Outros itens com ação -->
+              <li *ngIf="child.label !== 'OTHERS_MENU.LANGUAGE' && child.label !== 'OTHERS_MENU.THEME'"
+                  [class.logout-item]="child.label === 'OTHERS_MENU.LOGOUT'"
+                  (click)="child.action && child.action(); closeMenu()">
+                <i *ngIf="child.icon" class="fas {{ child.icon }}"></i>
+                <span>{{ child.label | translate }}</span>
+              </li>
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+    </ng-container>
+  </ul>
+</nav>

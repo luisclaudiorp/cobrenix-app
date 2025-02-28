@@ -1,9 +1,11 @@
 <nav class="breadcrumb" aria-label="breadcrumb">
   <ol>
     <li *ngFor="let item of breadcrumbs; let last = last" [class.active]="last">
-      <a [routerLink]="item.url" *ngIf="!last">{{ item.label | translate }}</a>
-      <span *ngIf="last">{{ item.label | translate }}</span>
-      <span class="separator" *ngIf="!last">/</span>
+      <ng-container *ngIf="item.label">
+        <a [routerLink]="item.url" *ngIf="!last">{{ item.label | translate }}</a>
+        <span *ngIf="last">{{ item.label | translate }}</span>
+        <span class="separator" *ngIf="!last && breadcrumbs[breadcrumbs.indexOf(item) + 1]?.label">/</span>
+      </ng-container>
     </li>
   </ol>
 </nav>
