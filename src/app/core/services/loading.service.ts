@@ -39,11 +39,13 @@ export class LoadingService {
   }
 
   show() {
-    this.requestCount++;
-    if (this.requestCount === 1) {
-      this.loadingStartTime = Date.now();
-      this.loadingSubject.next(true);
-    }
+    Promise.resolve().then(() => {
+      this.requestCount++;
+      if (this.requestCount === 1) {
+        this.loadingStartTime = Date.now();
+        this.loadingSubject.next(true);
+      }
+    });
   }
 
   hide() {

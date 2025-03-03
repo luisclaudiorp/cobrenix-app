@@ -1,0 +1,65 @@
+<div class="companies-form-container">
+  <div class="header">
+    <h2>{{ isEditing ? 'Editar' : 'Nova' }} Empresa</h2>
+  </div>
+
+  <div class="loading-overlay" *ngIf="loading">
+    <div class="spinner"></div>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="!loading">
+    <div class="form-group">
+      <label for="name">Nome</label>
+      <input
+        id="name"
+        type="text"
+        formControlName="name"
+        [class.invalid]="form.get('name')?.invalid && form.get('name')?.touched"
+      >
+      <div class="error-message" *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+        <span *ngIf="form.get('name')?.errors?.['required']">Nome é obrigatório</span>
+        <span *ngIf="form.get('name')?.errors?.['minlength']">Nome deve ter no mínimo 3 caracteres</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        [class.invalid]="form.get('email')?.invalid && form.get('email')?.touched"
+      >
+      <div class="error-message" *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+        <span *ngIf="form.get('email')?.errors?.['required']">Email é obrigatório</span>
+        <span *ngIf="form.get('email')?.errors?.['email']">Email inválido</span>
+      </div>
+    </div>
+
+    <div class="form-group checkbox">
+      <label>
+        <input type="checkbox" formControlName="active">
+        Empresa Ativa
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label for="config">Configurações (JSON)</label>
+      <textarea
+        id="config"
+        formControlName="config"
+        rows="4"
+        placeholder="{ }"
+      ></textarea>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="btn-secondary" (click)="cancel()">
+        Cancelar
+      </button>
+      <button type="submit" class="btn-primary" [disabled]="saving">
+        {{ saving ? 'Salvando...' : 'Salvar' }}
+      </button>
+    </div>
+  </form>
+</div>

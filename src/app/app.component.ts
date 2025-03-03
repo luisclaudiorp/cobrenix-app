@@ -16,7 +16,7 @@ import { LanguageService } from './core/services/language.service';
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
-  isInitializing$: any;
+  isInitializing$ = this.loadingService.loading$;
 
   constructor(
     private authService: AuthService,
@@ -48,13 +48,12 @@ export class AppComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    // Mantém o loading ativo durante a inicialização
-    this.loadingService.show();
-    
-    // Pequeno delay para garantir que o loading seja mostrado
-    setTimeout(() => {
-      this.authService.initializeAuth();
-    }, 100);
+  async ngOnInit() {
+    try {
+      this.loadingService.show();
+      await this.authService.initializeAuth();
+    } finally {
+      this.loadingService.hide();
+    }
   }
 }

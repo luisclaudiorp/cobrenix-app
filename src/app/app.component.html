@@ -1,5 +1,7 @@
 <div class="app-container">
-  <app-loading *ngIf="isInitializing$ | async"></app-loading>
+  @if (isInitializing$ | async) {
+    <app-loading></app-loading>
+  }
   <div class="app-content" [class.hidden]="isInitializing$ | async">
     <router-outlet></router-outlet>
   </div>
