@@ -91,7 +91,7 @@ export class MainMenuComponent implements OnInit {
         roles: ['admin'],
         children: [
           { label: 'MENU.LIST', route: '/companies/list' },
-          { label: 'MENU.REGISTER', route: '/companies/register' }
+          { label: 'MENU.REGISTER', route: '/companies/new' }
         ]
       }
     ];

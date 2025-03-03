@@ -1,5 +1,4 @@
 <div class="login-container">
-
   <div class="login-card">
     <div class="login-header">
       <h1>CobreNix<span>.Ltda</span></h1>
@@ -7,42 +6,36 @@
 
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
       <div class="form-group">
-        <label for="email">{{ 'LOGIN.EMAIL' | translate }}</label>
-        <input
-          type="email"
-          id="email"
-          formControlName="email"
-          [class.invalid]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
-          [placeholder]="'LOGIN.EMAIL_PLACEHOLDER' | translate"
-        >
-        <div class="error-message" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
-          <span *ngIf="loginForm.get('email')?.errors?.['required']">{{ 'LOGIN.EMAIL_REQUIRED' | translate }}</span>
-          <span *ngIf="loginForm.get('email')?.errors?.['email']">{{ 'LOGIN.EMAIL_INVALID' | translate }}</span>
-        </div>
+        <app-input
+          [control]="emailControl"
+          [options]="{
+            type: 'email',
+            label: 'LOGIN.EMAIL',
+            placeholder: 'LOGIN.EMAIL_PLACEHOLDER',
+            id: 'email',
+            required: true,
+            errorMessages: {
+              required: 'LOGIN.EMAIL_REQUIRED',
+              email: 'LOGIN.EMAIL_INVALID'
+            }
+          }"
+        ></app-input>
       </div>
 
       <div class="form-group">
-        <label for="password">{{ 'LOGIN.PASSWORD' | translate }}</label>
-        <div class="password-input">
-          <input
-            [type]="showPassword ? 'text' : 'password'"
-            id="password"
-            formControlName="password"
-            [class.invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
-            [placeholder]="'LOGIN.PASSWORD_PLACEHOLDER' | translate"
-          >
-          <button 
-            type="button" 
-            class="toggle-password" 
-            (click)="togglePasswordVisibility()"
-            [attr.aria-label]="(showPassword ? 'LOGIN.HIDE_PASSWORD' : 'LOGIN.SHOW_PASSWORD') | translate"
-          >
-            <i class="fas" [class.fa-eye]="!showPassword" [class.fa-eye-slash]="showPassword"></i>
-          </button>
-        </div>
-        <div class="error-message" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
-          <span *ngIf="loginForm.get('password')?.errors?.['required']">{{ 'LOGIN.PASSWORD_REQUIRED' | translate }}</span>
-        </div>
+        <app-input
+          [control]="passwordControl"
+          [options]="{
+            type: 'password',
+            label: 'LOGIN.PASSWORD',
+            placeholder: 'LOGIN.PASSWORD_PLACEHOLDER',
+            id: 'password',
+            required: true,
+            errorMessages: {
+              required: 'LOGIN.PASSWORD_REQUIRED'
+            }
+          }"
+        ></app-input>
       </div>
 
       <div class="form-group checkbox">

@@ -70,5 +70,16 @@
   "DIALOG": {
     "CANCEL": "Cancelar",
     "CONFIRM": "Confirmar"
+  },
+  "INPUT": {
+    "SHOW_PASSWORD": "Mostrar senha",
+    "HIDE_PASSWORD": "Ocultar senha",
+    "ERROR": {
+      "REQUIRED": "Este campo é obrigatório",
+      "EMAIL": "Email inválido",
+      "MIN_LENGTH": "Tamanho mínimo não atingido",
+      "MAX_LENGTH": "Tamanho máximo excedido",
+      "PATTERN": "Formato inválido"
+    }
   }
 }

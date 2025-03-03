@@ -5,7 +5,7 @@ import { HomeComponent } from './features/home/home.component';
 import { LoginComponent } from './features/auth/login/login.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { AdminGuard } from './core/guards/admin.guard';
-import { CompaniesComponent } from './features/companies/companies.component';
+
 import { ClientsComponent } from './features/clients/clients.component';
 import { ProductsComponent } from './features/products/products.component';
 import { SalesComponent } from './features/sales/sales.component';
@@ -102,21 +102,7 @@ export const routes: Routes = [
       {
         path: 'companies',
         canActivate: [AdminGuard],
-        children: [
-          {
-            path: 'list',
-            component: CompaniesComponent
-          },
-          {
-            path: 'register',
-            component: CompaniesComponent
-          },
-          {
-            path: '',
-            redirectTo: 'list',
-            pathMatch: 'full'
-          }
-        ]
+        loadChildren: () => import('./features/companies/companies.module').then(m => m.CompaniesModule)
       }
     ]
   },

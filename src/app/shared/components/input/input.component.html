@@ -1,0 +1,48 @@
+<div class="input-container" [class.has-error]="hasError()">
+  <label *ngIf="options.label" [for]="options.id">
+    {{ options.label | translate }}
+    <span class="required" *ngIf="options.required">*</span>
+  </label>
+
+  <div class="input-wrapper" [class.has-icon]="options.icon" [class.icon-left]="options.iconPosition === 'left'">
+    <i *ngIf="options.icon && options.iconPosition === 'left'" 
+       class="fas {{ options.icon }}"
+       (click)="options.iconAction && options.iconAction()">
+    </i>
+
+    <input
+      [type]="getInputType()"
+      [id]="options.id"
+      [name]="options.name"
+      [placeholder]="options.placeholder ? (options.placeholder | translate) : ''"
+      [attr.maxlength]="options.maxlength"
+      [attr.minlength]="options.minlength"
+      [attr.pattern]="options.pattern"
+      [attr.autocomplete]="options.autocomplete"
+      [required]="options.required"
+      [readonly]="options.readonly"
+      [disabled]="isDisabled"
+      [value]="inputValue"
+      [class.invalid]="isInvalid"
+      (input)="onInput($event)"
+      (blur)="markAsTouched()"
+    >
+
+    <button *ngIf="options.type === 'password'"
+            type="button"
+            class="toggle-password"
+            (click)="togglePasswordVisibility()"
+            [attr.aria-label]="(showPassword ? 'INPUT.HIDE_PASSWORD' : 'INPUT.SHOW_PASSWORD') | translate">
+      <i class="fas" [class.fa-eye]="!showPassword" [class.fa-eye-slash]="showPassword"></i>
+    </button>
+
+    <i *ngIf="options.icon && options.iconPosition === 'right'"
+       class="fas {{ options.icon }}"
+       (click)="options.iconAction && options.iconAction()">
+    </i>
+  </div>
+
+  <div class="error-message" *ngIf="hasError()">
+    {{ getErrorMessage() | translate }}
+  </div>
+</div>
