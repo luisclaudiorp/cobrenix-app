@@ -1,19 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CompaniesService } from '../../services/companies.service';
 import { Company } from '../../interfaces/company.interface';
+import { InputComponent } from '../../../../shared/components/input/input.component';
+import { JsonInputComponent } from '../../../../shared/components/json-input/json-input.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-companies-form',
   templateUrl: './companies-form.component.html',
   styleUrls: ['./companies-form.component.scss'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule]
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, InputComponent, JsonInputComponent, TranslateModule]
 })
 export class CompaniesFormComponent implements OnInit {
-  form: FormGroup;
+  form!: FormGroup;
+  nameControl!: FormControl;
+  emailControl!: FormControl;
+  configControl!: FormControl;
   isEditing = false;
   companyId: number | null = null;
   loading = false;
@@ -25,11 +31,19 @@ export class CompaniesFormComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
+    this.initializeForm();
+  }
+
+  private initializeForm() {
+    this.nameControl = new FormControl('', [Validators.required, Validators.minLength(3)]);
+    this.emailControl = new FormControl('', [Validators.required, Validators.email]);
+    this.configControl = new FormControl('');
+
     this.form = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.email]],
+      name: this.nameControl,
+      email: this.emailControl,
       active: [true],
-      config: [{}]
+      config: this.configControl
     });
   }
 
@@ -47,7 +61,11 @@ export class CompaniesFormComponent implements OnInit {
     this.companiesService.getAll({ id }).subscribe({
       next: (companies) => {
         if (companies.length > 0) {
-          this.form.patchValue(companies[0]);
+          const company = companies[0];
+          this.form.patchValue({
+            ...company,
+            config: company.config ? JSON.stringify(company.config, null, 2) : ''
+          });
         }
         this.loading = false;
       },
@@ -62,7 +80,11 @@ export class CompaniesFormComponent implements OnInit {
   onSubmit() {
     if (this.form.valid) {
       this.saving = true;
-      const company: Company = this.form.value;
+      const formValue = this.form.value;
+      const company: Company = {
+        ...formValue,
+        config: formValue.config ? JSON.parse(formValue.config) : {}
+      };
 
       const request = this.isEditing && this.companyId
         ? this.companiesService.update(this.companyId, company)

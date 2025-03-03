@@ -3,7 +3,11 @@ export interface Company {
   name: string;
   email: string;
   active?: boolean;
-  config?: object;
+  config?: {
+    employees?: number;
+    [key: string]: any;
+  };
+  avatar?: string;
   createdAt?: Date;
   updatedAt?: Date;
 }
