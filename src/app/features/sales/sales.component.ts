@@ -28,7 +28,7 @@ import { TranslateModule } from '@ngx-translate/core';
       transition: all 0.3s ease;
     }
     h2 {
-      color: var(--logo-color-main);
+      color: var(--logo-color);
       margin-bottom: 1.5rem;
       font-size: 1.5rem;
       font-weight: 500;
