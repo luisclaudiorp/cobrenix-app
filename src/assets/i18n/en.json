@@ -24,7 +24,8 @@
     "OTHERS": "Others",
     "USER": "User",
     "LIST": "List",
-    "REGISTER": "Register"
+    "REGISTER": "Register",
+    "EDIT": "Edit"
   },
   "FEATURE": {
     "TEMPORARY_PAGE": "This is a temporary page for the {{module}} module",
@@ -70,6 +71,58 @@
   "DIALOG": {
     "CANCEL": "Cancel",
     "CONFIRM": "Confirm"
+  },
+  "COMPANIES": {
+    "TITLE": {
+      "NEW": "New Company",
+      "EDIT": "Edit Company",
+      "LIST": "Companies"
+    },
+    "LIST": {
+      "FILTERS": {
+        "NAME": "Name",
+        "NAME_PLACEHOLDER": "Filter by name",
+        "EMAIL": "Email",
+        "EMAIL_PLACEHOLDER": "Filter by email",
+        "STATUS": "Status",
+        "STATUS_ALL": "All",
+        "STATUS_ACTIVE": "Active",
+        "STATUS_INACTIVE": "Inactive",
+        "CLEAR": "Clear Filters"
+      },
+      "ACTIONS": {
+        "EDIT": "Edit company",
+        "TOGGLE_STATUS": "Toggle status"
+      },
+      "EMPLOYEES": "employees",
+      "NO_DATA": "No companies found",
+      "NEW_COMPANY": "New Company"
+    },
+    "FORM": {
+      "NAME": "Name",
+      "NAME_PLACEHOLDER": "Enter company name",
+      "EMAIL": "Email",
+      "EMAIL_PLACEHOLDER": "Enter company email",
+      "ACTIVE": "Company Active",
+      "CONFIG": "Settings (JSON)",
+      "CONFIG_PLACEHOLDER": "{ }",
+      "SAVE": "Save",
+      "SAVING": "Saving...",
+      "CANCEL": "Cancel"
+    },
+    "ERROR": {
+      "NAME_REQUIRED": "Name is required",
+      "NAME_MIN_LENGTH": "Name must be at least 3 characters",
+      "EMAIL_REQUIRED": "Email is required",
+      "EMAIL_INVALID": "Invalid email"
+    }
+  },
+  "JSON": {
+    "FORMAT": "Format JSON",
+    "ERROR": {
+      "INVALID": "Invalid JSON",
+      "REQUIRED": "This field is required"
+    }
   },
   "INPUT": {
     "SHOW_PASSWORD": "Show password",

@@ -24,7 +24,8 @@
     "OTHERS": "Outros",
     "USER": "Usuário",
     "LIST": "Listar",
-    "REGISTER": "Cadastrar"
+    "REGISTER": "Cadastrar",
+    "EDIT": "Editar"
   },
   "FEATURE": {
     "TEMPORARY_PAGE": "Esta é uma página temporária para o módulo de {{module}}",
@@ -70,6 +71,58 @@
   "DIALOG": {
     "CANCEL": "Cancelar",
     "CONFIRM": "Confirmar"
+  },
+  "COMPANIES": {
+    "TITLE": {
+      "NEW": "Nova Empresa",
+      "EDIT": "Editar Empresa",
+      "LIST": "Empresas"
+    },
+    "LIST": {
+      "FILTERS": {
+        "NAME": "Nome",
+        "NAME_PLACEHOLDER": "Filtrar por nome",
+        "EMAIL": "Email",
+        "EMAIL_PLACEHOLDER": "Filtrar por email",
+        "STATUS": "Status",
+        "STATUS_ALL": "Todos",
+        "STATUS_ACTIVE": "Ativo",
+        "STATUS_INACTIVE": "Inativo",
+        "CLEAR": "Limpar Filtros"
+      },
+      "ACTIONS": {
+        "EDIT": "Editar empresa",
+        "TOGGLE_STATUS": "Alterar status"
+      },
+      "EMPLOYEES": "funcionários",
+      "NO_DATA": "Nenhuma empresa encontrada",
+      "NEW_COMPANY": "Nova Empresa"
+    },
+    "FORM": {
+      "NAME": "Nome",
+      "NAME_PLACEHOLDER": "Digite o nome da empresa",
+      "EMAIL": "Email",
+      "EMAIL_PLACEHOLDER": "Digite o email da empresa",
+      "ACTIVE": "Empresa Ativa",
+      "CONFIG": "Configurações (JSON)",
+      "CONFIG_PLACEHOLDER": "{ }",
+      "SAVE": "Salvar",
+      "SAVING": "Salvando...",
+      "CANCEL": "Cancelar"
+    },
+    "ERROR": {
+      "NAME_REQUIRED": "Nome é obrigatório",
+      "NAME_MIN_LENGTH": "Nome deve ter no mínimo 3 caracteres",
+      "EMAIL_REQUIRED": "Email é obrigatório",
+      "EMAIL_INVALID": "Email inválido"
+    }
+  },
+  "JSON": {
+    "FORMAT": "Formatar JSON",
+    "ERROR": {
+      "INVALID": "JSON inválido",
+      "REQUIRED": "Este campo é obrigatório"
+    }
   },
   "INPUT": {
     "SHOW_PASSWORD": "Mostrar senha",

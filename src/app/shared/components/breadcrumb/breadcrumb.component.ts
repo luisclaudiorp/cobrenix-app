@@ -119,6 +119,8 @@ export class BreadcrumbComponent implements OnInit {
       'user': { key: 'MENU.USER' },
       'list': { key: 'MENU.LIST' },
       'register': { key: 'MENU.REGISTER' },
+      'new': { key: 'MENU.REGISTER' },
+      'edit': { key: 'MENU.EDIT' },
       'profile': { key: 'OTHERS_MENU.PROFILE' }
     };
 

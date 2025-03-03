@@ -1,0 +1,186 @@
+.company-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--card-background);
+  border-radius: 8px;
+  box-shadow: var(--card-box-shadow);
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem 1rem;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--card-hover-shadow);
+  }
+
+  &.inactive {
+    opacity: 0.7;
+    background: var(--background-light);
+  }
+
+  .company-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    overflow: hidden;
+    flex-shrink: 0;
+
+    @media (max-width: 767px) {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 1rem;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .avatar-placeholder {
+      width: 100%;
+      height: 100%;
+      background: var(--background-label);
+      color: var(--input-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 600;
+      border-radius: 12px;
+    }
+  }
+
+  .company-info {
+    flex: 1;
+    min-width: 0;
+
+    .company-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+
+      @media (max-width: 767px) {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .company-name {
+        margin: 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--text-color);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        @media (max-width: 767px) {
+          white-space: normal;
+          text-align: center;
+        }
+      }
+
+      .status-badge {
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        background: var(--error-light);
+        color: var(--error-color);
+
+        &.active {
+          background: var(--success-light);
+          color: var(--success-color);
+        }
+      }
+    }
+
+    .company-email {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-color-light);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+
+      @media (max-width: 767px) {
+        justify-content: center;
+      }
+
+      i {
+        font-size: 0.8rem;
+      }
+    }
+
+    .company-meta {
+      display: flex;
+      gap: 1rem;
+
+      @media (max-width: 767px) {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-color-light);
+        font-size: 0.85rem;
+
+        i {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+
+  .company-actions {
+    display: flex;
+    gap: 0.5rem;
+    padding-left: 1rem;
+    border-left: 1px solid var(--border-color);
+
+    @media (max-width: 767px) {
+      padding-left: 0;
+      border-left: none;
+      padding-top: 1rem;
+      margin-top: 1rem;
+      border-top: 1px solid var(--border-color);
+      justify-content: center;
+    }
+
+    .btn-icon {
+      background: none;
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+      color: var(--toggle-color);
+      transition: all 0.3s ease;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        color: var(--toggle-hover-color);
+        background: var(--background-light);
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+  }
+}
