@@ -3,42 +3,42 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { CompaniesService } from '../../services/companies.service';
 import { Company, CompanyFilters } from '../../interfaces/company.interface';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { InputComponent } from '../../../../shared/components/input/input.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { CompanyCardComponent } from '../company-card/company-card.component';
+import { SelectComponent } from '../../../../shared/components/select/select.component';
 
 @Component({
   selector: 'app-companies-list',
   templateUrl: './companies-list.component.html',
   styleUrls: ['./companies-list.component.scss'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule]
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, InputComponent, TranslateModule, CompanyCardComponent, SelectComponent]
 })
 export class CompaniesListComponent implements OnInit {
   companies: Company[] = [];
   loading = false;
-  filterForm: FormGroup;
+  filterForm!: FormGroup;
+  activeControl!: FormControl;
 
   constructor(
     private companiesService: CompaniesService,
     private router: Router,
     private fb: FormBuilder
   ) {
+    this.activeControl = new FormControl(null);
+
     this.filterForm = this.fb.group({
       name: [''],
       email: [''],
-      active: [null]
+      active: this.activeControl
     });
-  }
 
-  ngOnInit() {
-    this.setupFilterListener();
-    this.loadCompanies();
-  }
-
-  private setupFilterListener() {
     this.filterForm.valueChanges
       .pipe(
-        debounceTime(500),
+        debounceTime(300),
         distinctUntilChanged()
       )
       .subscribe(() => {
@@ -46,20 +46,24 @@ export class CompaniesListComponent implements OnInit {
       });
   }
 
-  loadCompanies() {
+  ngOnInit() {
+    this.loadCompanies();
+  }
+
+  private loadCompanies() {
     this.loading = true;
-    const formValue = this.filterForm.value;
     const filters: CompanyFilters = {};
 
-    // Adiciona apenas valores válidos aos filtros
-    if (formValue.name?.trim()) {
-      filters.name = formValue.name.trim();
+    if (this.filterForm.value.name) {
+      filters.name = this.filterForm.value.name;
     }
-    if (formValue.email?.trim()) {
-      filters.email = formValue.email.trim();
+
+    if (this.filterForm.value.email) {
+      filters.email = this.filterForm.value.email;
     }
-    if (formValue.active !== null && formValue.active !== undefined) {
-      filters.active = formValue.active;
+
+    if (this.filterForm.value.active !== null) {
+      filters.active = this.filterForm.value.active;
     }
 
     this.companiesService.getAll(filters).subscribe({
@@ -67,40 +71,36 @@ export class CompaniesListComponent implements OnInit {
         this.companies = companies;
         this.loading = false;
       },
-      error: (error: Error) => {
+      error: (error) => {
         console.error('Error loading companies:', error);
         this.loading = false;
       }
     });
   }
 
-  createCompany() {
+  clearFilters() {
+    this.filterForm.reset();
+  }
+
+  navigateToNew() {
     this.router.navigate(['/companies/new']);
   }
 
-  editCompany(id: number) {
+  navigateToEdit(id: number) {
     this.router.navigate(['/companies/edit', id]);
   }
 
-  deleteCompany(id: number) {
-    if (confirm('Tem certeza que deseja excluir esta empresa?')) {
-      this.companiesService.delete(id).subscribe({
-        next: () => {
-          this.loadCompanies();
-        },
-        error: (error: Error) => {
-          console.error('Error deleting company:', error);
-        }
-      });
-    }
-  }
-
-  clearFilters() {
-    this.filterForm.patchValue({
-      name: '',
-      email: '',
-      active: null
+  toggleStatus(company: Company) {
+    if (!company.id) return;
+    
+    const updatedCompany = { ...company, active: !company.active };
+    this.companiesService.update(company.id, updatedCompany).subscribe({
+      next: () => {
+        this.loadCompanies();
+      },
+      error: (error) => {
+        console.error('Error updating company status:', error);
+      }
     });
-    this.loadCompanies();
   }
 }

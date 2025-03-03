@@ -1,34 +1,52 @@
 <div class="companies-list-container">
   <div class="header">
-    <h2>Empresas</h2>
-    <button class="btn-primary" (click)="createCompany()">
-      Nova Empresa
-    </button>
+    <h2>{{ 'COMPANIES.TITLE.LIST' | translate }}</h2>
+    <button class="btn-primary" (click)="navigateToNew()">{{ 'COMPANIES.LIST.NEW_COMPANY' | translate }}</button>
   </div>
 
   <div class="filters" [formGroup]="filterForm">
     <div class="filter-row">
       <div class="filter-field">
-        <label>Nome</label>
-        <input type="text" formControlName="name" placeholder="Filtrar por nome">
+        <app-input
+          [control]="filterForm.get('name')"
+          [options]="{
+            type: 'text',
+            label: 'COMPANIES.LIST.FILTERS.NAME',
+            placeholder: 'COMPANIES.LIST.FILTERS.NAME_PLACEHOLDER',
+            id: 'filter-name'
+          }"
+        ></app-input>
       </div>
 
       <div class="filter-field">
-        <label>Email</label>
-        <input type="text" formControlName="email" placeholder="Filtrar por email">
+        <app-input
+          [control]="filterForm.get('email')"
+          [options]="{
+            type: 'email',
+            label: 'COMPANIES.LIST.FILTERS.EMAIL',
+            placeholder: 'COMPANIES.LIST.FILTERS.EMAIL_PLACEHOLDER',
+            id: 'filter-email'
+          }"
+        ></app-input>
       </div>
 
       <div class="filter-field">
-        <label>Status</label>
-        <select formControlName="active">
-          <option [ngValue]="null">Todos</option>
-          <option [ngValue]="true">Ativo</option>
-          <option [ngValue]="false">Inativo</option>
-        </select>
+        <app-select
+          [control]="activeControl"
+          [options]="{
+            label: 'COMPANIES.LIST.FILTERS.STATUS',
+            id: 'status-filter',
+            options: [
+              { value: null, label: 'COMPANIES.LIST.FILTERS.STATUS_ALL' },
+              { value: true, label: 'COMPANIES.LIST.FILTERS.STATUS_ACTIVE' },
+              { value: false, label: 'COMPANIES.LIST.FILTERS.STATUS_INACTIVE' }
+            ]
+          }"
+        ></app-select>
       </div>
 
       <button class="btn-secondary" (click)="clearFilters()">
-        Limpar Filtros
+        {{ 'COMPANIES.LIST.FILTERS.CLEAR' | translate }}
       </button>
     </div>
   </div>
@@ -37,42 +55,19 @@
     <div class="spinner"></div>
   </div>
 
-  <div class="companies-table" *ngIf="!loading">
-    <table>
-      <thead>
-        <tr>
-          <th>Nome</th>
-          <th>Email</th>
-          <th>Status</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let company of companies">
-          <td>{{ company.name }}</td>
-          <td>{{ company.email }}</td>
-          <td>
-            <span class="status-badge" [class.active]="company.active">
-              {{ company.active ? 'Ativo' : 'Inativo' }}
-            </span>
-          </td>
-          <td class="actions">
-            <ng-container *ngIf="company.id">
-              <button class="btn-icon" (click)="editCompany(company.id)">
-                <i class="fas fa-edit"></i>
-              </button>
-              <button class="btn-icon delete" (click)="deleteCompany(company.id)">
-                <i class="fas fa-trash"></i>
-              </button>
-            </ng-container>
-          </td>
-        </tr>
-        <tr *ngIf="companies.length === 0">
-          <td colspan="4" class="no-data">
-            Nenhuma empresa encontrada
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="companies-grid" *ngIf="!loading">
+    <div class="no-data" *ngIf="companies.length === 0">
+      <i class="fas fa-building"></i>
+      <p>{{ 'COMPANIES.LIST.NO_DATA' | translate }}</p>
+    </div>
+
+    <div class="companies-list" *ngIf="companies.length > 0">
+      <app-company-card
+        *ngFor="let company of companies"
+        [company]="company"
+        (edit)="navigateToEdit($event)"
+        (toggleStatus)="toggleStatus($event)"
+      ></app-company-card>
+    </div>
   </div>
 </div>

@@ -1,0 +1,42 @@
+<div class="company-card" [class.inactive]="!company.active">
+  <div class="company-avatar">
+    <div class="avatar-placeholder" *ngIf="!company.avatar">
+      {{ getInitials(company.name) }}
+    </div>
+    <img *ngIf="company.avatar" [src]="company.avatar" [alt]="company.name" />
+  </div>
+
+  <div class="company-info">
+    <div class="company-header">
+      <h3 class="company-name">{{ company.name }}</h3>
+      <div class="status-badge" [class.active]="company.active">
+        {{ (company.active ? 'COMPANIES.LIST.FILTERS.STATUS_ACTIVE' : 'COMPANIES.LIST.FILTERS.STATUS_INACTIVE') | translate }}
+      </div>
+    </div>
+    
+    <div class="company-email">
+      <i class="fas fa-envelope"></i>
+      {{ company.email }}
+    </div>
+
+    <div class="company-meta">
+      <div class="meta-item" *ngIf="company.config?.employees">
+        <i class="fas fa-users"></i>
+        {{ company.config?.employees }} {{ 'COMPANIES.LIST.EMPLOYEES' | translate }}
+      </div>
+      <div class="meta-item" *ngIf="company.createdAt">
+        <i class="fas fa-calendar"></i>
+        {{ company.createdAt | date:'mediumDate' }}
+      </div>
+    </div>
+  </div>
+
+  <div class="company-actions">
+    <button class="btn-icon" (click)="onEdit()" [title]="'COMPANIES.LIST.ACTIONS.EDIT' | translate">
+      <i class="fas fa-edit"></i>
+    </button>
+    <button class="btn-icon" (click)="onToggleStatus()" [title]="'COMPANIES.LIST.ACTIONS.TOGGLE_STATUS' | translate">
+      <i class="fas" [class.fa-toggle-on]="company.active" [class.fa-toggle-off]="!company.active"></i>
+    </button>
+  </div>
+</div>
