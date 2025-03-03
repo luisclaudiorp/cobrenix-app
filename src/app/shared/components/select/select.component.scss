@@ -1,0 +1,104 @@
+.select-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+    color: var(--label-color);
+    font-weight: 500;
+
+    .required {
+      color: var(--error-color);
+      margin-left: 0.25rem;
+    }
+  }
+
+  .select-wrapper {
+    position: relative;
+    width: 100%;
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0.8rem;
+      height: 0.8rem;
+      border-right: 2px solid var(--toggle-color);
+      border-bottom: 2px solid var(--toggle-color);
+      transform: translateY(-70%) rotate(45deg);
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    select {
+      width: 100%;
+      padding: 0.75rem 2.5rem 0.75rem 1rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      border: var(--border-label);
+      background: var(--background-label);
+      color: var(--input-color);
+      cursor: pointer;
+      appearance: none;
+      font-weight: 500;
+
+      &:focus {
+        outline: none;
+        border-color: var(--input-focus-border);
+        background: var(--input-focus-background);
+        box-shadow: var(--input-focus-shadow);
+      }
+
+      &:hover {
+        border-color: var(--input-focus-border);
+        background: var(--input-focus-background);
+      }
+
+      &:disabled {
+        background: var(--button-disabled-background);
+        color: var(--button-disabled-color);
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+
+      option {
+        padding: 0.75rem;
+        background: var(--background-label);
+        color: var(--input-color);
+        font-weight: normal;
+
+        &:checked {
+          background: var(--background-light);
+          font-weight: 500;
+        }
+      }
+    }
+
+    &:hover::after {
+      border-color: var(--toggle-hover-color);
+    }
+  }
+
+  &.has-error {
+    .select-wrapper select {
+      border-color: var(--input-invalid-border);
+      background: var(--input-invalid-background);
+      box-shadow: var(--input-invalid-shadow);
+    }
+  }
+
+  .error-message {
+    color: var(--error-color);
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+    text-shadow: none;
+  }
+}

@@ -1,0 +1,31 @@
+<div class="select-container" [class.has-error]="hasError()">
+  <label *ngIf="options.label" [for]="options.id">
+    {{ options.label | translate }}
+    <span class="required" *ngIf="options.required">*</span>
+  </label>
+
+  <div class="select-wrapper">
+    <select
+      [id]="options.id"
+      [name]="options.name"
+      [required]="options.required"
+      [disabled]="isDisabled || options.disabled"
+      [value]="inputValue"
+      (change)="onSelect($event)"
+      (blur)="markAsTouched()"
+    >
+      <option value="" *ngIf="options.placeholder">{{ options.placeholder | translate }}</option>
+      <option 
+        *ngFor="let opt of options.options" 
+        [value]="opt.value"
+        [selected]="opt.value === inputValue"
+      >
+        {{ opt.label | translate }}
+      </option>
+    </select>
+  </div>
+
+  <div class="error-message" *ngIf="hasError()">
+    {{ getErrorMessage() | translate }}
+  </div>
+</div>
